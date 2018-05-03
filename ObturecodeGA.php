@@ -50,10 +50,14 @@ function obtcookies_add_script(){
         $params['texto']=pll__(OBTURECODE_GA_TEXT);
         $params['titulo']=pll__(OBTURECODE_GA_TITLE);
         $params['acepto']=pll__(OBTURECODE_GA_ACCEPT);
-    }else{
-        $params['texto']=get_option('obtga_texto',OBTURECODE_GA_TEXT);
-        $params['titulo']=get_option('obtga_titulo',OBTURECODE_GA_TITLE);
-        $params['acepto']=get_option('obtga_acepto',OBTURECODE_GA_ACCEPT);
+    }}elseif (function_exists('wpm_translate_string')) {
+      $params['texto']=wpm_translate_string(get_option('obtga_texto',OBTURECODE_GA_TEXT));
+      $params['titulo']=wpm_translate_string(get_option('obtga_titulo',OBTURECODE_GA_TITLE));
+      $params['acepto']=wpm_translate_string(get_option('obtga_acepto',OBTURECODE_GA_ACCEPT));
+    }else {
+      $params['texto']=get_option('obtga_texto',OBTURECODE_GA_TEXT);
+      $params['titulo']=get_option('obtga_titulo',OBTURECODE_GA_TITLE);
+      $params['acepto']=get_option('obtga_acepto',OBTURECODE_GA_ACCEPT);
     }
 
     $params['intrusivo'] = get_option('obtga_intrusive_mode',OBTURECODE_GA_INTRUSIVE_MODE);
